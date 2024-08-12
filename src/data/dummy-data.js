@@ -506,7 +506,7 @@ export const MEALS = [
         quantity: "100g",
       },
       {
-        imageUrl: "https://banner2.cleanpng.com/20180129/byw/av2psqol7.webp",
+        imageUrl: "https://banner2.cleanpng.com/lnd/20240718/uhw/a9n8cvr4s.webp",
         name: "Salt",
         quantity: "10g",
       },
@@ -576,12 +576,12 @@ export const MEALS = [
         quantity: "10g",
       },
       {
-        imageUrl: "https://banner2.cleanpng.com/20180129/byw/av2psqol7.webp",
+        imageUrl: "https://banner2.cleanpng.com/lnd/20240718/uhw/a9n8cvr4s.webp",
         name: "Olive Oil",
         quantity: "40ml",
       },
       {
-        imageUrl: "https://banner2.cleanpng.com/20180129/byw/av2psqol7.webp",
+        imageUrl: "https://banner2.cleanpng.com/lnd/20240718/uhw/a9n8cvr4s.webp",
         name: "Salt and Pepper",
         quantity: "5g",
       },
@@ -619,7 +619,7 @@ export const MEALS = [
         quantity: "150ml",
       },
       {
-        imageUrl: "https://png.pngtree.com/png-vector/20240730/ourlarge/pngtree-turmeric-spice-powder-with-green-leaves-isolated-on-transparent-background-ai-png-image_13294687.png",
+        imageUrl: "https://banner2.cleanpng.com/lnd/20240718/uhw/a9n8cvr4s.webp",
         name: "Sugar",
         quantity: "80g",
       },
