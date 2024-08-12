@@ -1,0 +1,406 @@
+{
+  "project_info": {
+    "project_number": "409637778044",
+    "project_id": "nlt-smarts-2946d",
+    "storage_bucket": "nlt-smarts-2946d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:409637778044:android:a45a2afe820ff5185e4ff9",
+        "android_client_info": {
+          "package_name": "com.nlt_duytu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "409637778044-m3rtepsraul3u40cbupa5pjo6uh9tf7r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfpyVn4NNyDVvN1nzFxFVzl-PjSFUUBDw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "409637778044-m3rtepsraul3u40cbupa5pjo6uh9tf7r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "409637778044-11fueavt4ktohsvoij5r28on60rgq86l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.namlongtekgroup.nltsmarts"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:409637778044:android:f8185155739805465e4ff9",
+        "android_client_info": {
+          "package_name": "com.myawesomeproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "409637778044-m3rtepsraul3u40cbupa5pjo6uh9tf7r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfpyVn4NNyDVvN1nzFxFVzl-PjSFUUBDw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "409637778044-m3rtepsraul3u40cbupa5pjo6uh9tf7r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "409637778044-11fueavt4ktohsvoij5r28on60rgq86l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.namlongtekgroup.nltsmarts"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:409637778044:android:df9623277c2f2cd95e4ff9",
+        "android_client_info": {
+          "package_name": "com.myawesomeproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "409637778044-m3rtepsraul3u40cbupa5pjo6uh9tf7r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfpyVn4NNyDVvN1nzFxFVzl-PjSFUUBDw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "409637778044-m3rtepsraul3u40cbupa5pjo6uh9tf7r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "409637778044-11fueavt4ktohsvoij5r28on60rgq86l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.namlongtekgroup.nltsmarts"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:409637778044:android:c37fef7e446af9425e4ff9",
+        "android_client_info": {
+          "package_name": "com.nltcustomer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "409637778044-m3rtepsraul3u40cbupa5pjo6uh9tf7r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfpyVn4NNyDVvN1nzFxFVzl-PjSFUUBDw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "409637778044-m3rtepsraul3u40cbupa5pjo6uh9tf7r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "409637778044-11fueavt4ktohsvoij5r28on60rgq86l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.namlongtekgroup.nltsmarts"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:409637778044:android:c13f19cc36775e345e4ff9",
+        "android_client_info": {
+          "package_name": "com.nltsmarts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "409637778044-m3rtepsraul3u40cbupa5pjo6uh9tf7r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfpyVn4NNyDVvN1nzFxFVzl-PjSFUUBDw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "409637778044-m3rtepsraul3u40cbupa5pjo6uh9tf7r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "409637778044-11fueavt4ktohsvoij5r28on60rgq86l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.namlongtekgroup.nltsmarts"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:409637778044:android:7100dbb5364cb4ea5e4ff9",
+        "android_client_info": {
+          "package_name": "com.nltsmarts_customer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "409637778044-m3rtepsraul3u40cbupa5pjo6uh9tf7r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfpyVn4NNyDVvN1nzFxFVzl-PjSFUUBDw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "409637778044-m3rtepsraul3u40cbupa5pjo6uh9tf7r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "409637778044-11fueavt4ktohsvoij5r28on60rgq86l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.namlongtekgroup.nltsmarts"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:409637778044:android:b4ebe063bf86e1095e4ff9",
+        "android_client_info": {
+          "package_name": "com.npl_customer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "409637778044-m3rtepsraul3u40cbupa5pjo6uh9tf7r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfpyVn4NNyDVvN1nzFxFVzl-PjSFUUBDw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "409637778044-m3rtepsraul3u40cbupa5pjo6uh9tf7r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "409637778044-11fueavt4ktohsvoij5r28on60rgq86l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.namlongtekgroup.nltsmarts"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:409637778044:android:7eabe33563f058755e4ff9",
+        "android_client_info": {
+          "package_name": "com.pmgassmart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "409637778044-m3rtepsraul3u40cbupa5pjo6uh9tf7r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfpyVn4NNyDVvN1nzFxFVzl-PjSFUUBDw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "409637778044-m3rtepsraul3u40cbupa5pjo6uh9tf7r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "409637778044-11fueavt4ktohsvoij5r28on60rgq86l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.namlongtekgroup.nltsmarts"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:409637778044:android:2b6604f1dc1269215e4ff9",
+        "android_client_info": {
+          "package_name": "com.pmgcustomer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "409637778044-m3rtepsraul3u40cbupa5pjo6uh9tf7r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfpyVn4NNyDVvN1nzFxFVzl-PjSFUUBDw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "409637778044-m3rtepsraul3u40cbupa5pjo6uh9tf7r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "409637778044-11fueavt4ktohsvoij5r28on60rgq86l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.namlongtekgroup.nltsmarts"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:409637778044:android:a12c173c2294f6b75e4ff9",
+        "android_client_info": {
+          "package_name": "com.pmgsmart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "409637778044-m3rtepsraul3u40cbupa5pjo6uh9tf7r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfpyVn4NNyDVvN1nzFxFVzl-PjSFUUBDw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "409637778044-m3rtepsraul3u40cbupa5pjo6uh9tf7r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "409637778044-11fueavt4ktohsvoij5r28on60rgq86l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.namlongtekgroup.nltsmarts"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:409637778044:android:14555c64dcf1ce4d5e4ff9",
+        "android_client_info": {
+          "package_name": "com.smartgasdelivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "409637778044-m3rtepsraul3u40cbupa5pjo6uh9tf7r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfpyVn4NNyDVvN1nzFxFVzl-PjSFUUBDw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "409637778044-m3rtepsraul3u40cbupa5pjo6uh9tf7r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "409637778044-11fueavt4ktohsvoij5r28on60rgq86l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.namlongtekgroup.nltsmarts"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

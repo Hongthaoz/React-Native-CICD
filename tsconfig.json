@@ -1,0 +1,22 @@
+// prettier-ignore
+{
+  "extends": "@tsconfig/react-native/tsconfig.json", /* Recommended React Native TSConfig base */
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "src/*"
+      ],
+      "tests": [
+        "tests/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@constants/*": [
+        "app/constants"
+      ]
+    },
+    "skipLibCheck": true /* Skip type checking all .d.ts files. */
+  }
+}
