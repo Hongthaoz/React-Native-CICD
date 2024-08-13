@@ -1,0 +1,44 @@
+{
+  "splash": {
+    "Result": [
+      {
+        "id": "1",
+        "title": "Monday",
+        "image": "https://i.pinimg.com/564x/2c/01/c0/2c01c04c77fda7dad285720119db395e.jpg"
+      },
+      {
+        "id": "2",
+        "title": "Tuesday",
+        "image": "https://i.pinimg.com/564x/d0/ba/92/d0ba92674ee2e2361ae037592821ff51.jpg"
+      },
+      {
+        "id": "3",
+        "title": "Wednesday",
+        "image": "https://i.pinimg.com/564x/58/00/a0/5800a05fbbb618e8d6c6de67946567c5.jpg"
+      },
+      {
+        "id": "4",
+        "title": "Thursday",
+        "image": "https://i.pinimg.com/564x/33/7b/d9/337bd9bd6eb35ccb2861c009b279f2b2.jpg"
+      },
+      {
+        "id": "5",
+        "title": "Friday",
+        "image": "https://i.pinimg.com/736x/34/17/0c/34170c95fc829717f8dba2f7e50c2ab8.jpg"
+      },
+      {
+        "id": "6",
+        "title": "Monday",
+        "image": "https://i.pinimg.com/564x/c3/f4/d5/c3f4d5e6cb6925cdcc60c30f50092f32.jpg"
+      },
+      {
+        "id": "7",
+        "title": "Monday",
+        "image": "https://i.pinimg.com/736x/9b/c7/59/9bc75918bd2da2458de7819512bae25c.jpg"
+      }
+    ],
+    "StatusCode": 200,
+    "Message": "Data fetched successfully",
+    "ErrorCode": "0"
+  }
+}
