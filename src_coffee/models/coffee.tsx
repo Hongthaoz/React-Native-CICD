@@ -6,7 +6,6 @@ interface TypeSize {
     description: string;
     coffeeType: number; 
 }
-
 class Coffee {
     id: number;
     name: string;

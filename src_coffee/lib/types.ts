@@ -20,19 +20,16 @@ export type ProductItem = {
   grind_option: OptionItem[];
 }
 
-export type ProductItemCart = {
-  id: number;
-  name: string;
-  image_url: string;
-  price: number;
-  region: string;
-  level: number;
-  weight: number;
-  description: string;
+// Kế thừa từ ProductItem những trường trên hoặc dùng Omit
+
+// export type ProductItemCart = Omit<ProductItem, 'weight'> & {
+//   quantity: number;
+//   favorites: boolean;
+// }
+
+export type ProductItemCart = ProductItem & {
   quantity: number;
-  flavor_profile: FlavorItem[];
-  grind_option: OptionItem[];
-  favorites: boolean
+  favorites: boolean;
 }
 
 export type TabParamList = {
