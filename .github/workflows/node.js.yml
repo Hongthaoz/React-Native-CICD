@@ -27,14 +27,14 @@ jobs:
     # Bước sign APK/AAB và upload lên Google Play
     - name: Sign APK
       run: |
-        echo ${{ secrets.ANDROID_KEYSTORE }} | base64 --decode > my-release-key.keystore
+        echo ${{ secrets.MYAPP_UPLOAD_STORE_FILE }} | base64 --decode > my-release-key.keystore
         jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 \
         -keystore my-release-key.keystore \
-        -storepass ${{ secrets.ANDROID_KEYSTORE_PASSWORD }} \
-        -keypass ${{ secrets.ANDROID_KEY_ALIAS_PASSWORD }} \
+        -storepass ${{ secrets.MYAPP_UPLOAD_STORE_PASSWORD  }} \
+        -keypass ${{ secrets.MYAPP_UPLOAD_KEY_PASSWORD  }} \
         -signedjar app/build/outputs/apk/release/app-release.apk \
         app/build/outputs/apk/release/app-release-unsigned.apk \
-        ${{ secrets.ANDROID_KEY_ALIAS }}  # Thêm alias name vào đây
+        ${{ secrets.MYAPP_UPLOAD_KEY_ALIAS  }}  # Thêm alias name vào đây
     
     - name: Upload to Google Play
       uses: r0adkll/upload-google-play@v1
