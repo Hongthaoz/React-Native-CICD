@@ -40,6 +40,12 @@ jobs:
       run: |
         echo ${{ secrets.MYAPP_UPLOAD_STORE_FILE }} | base64 --decode > android/app/my-upload-key.keystore
 
+    # Clean Gradle Cache
+    - name: Clean Gradle Cache
+      run: |
+        cd android
+        ./gradlew clean
+
     # Xây dựng APK
     - name: Build APK
       run: |
