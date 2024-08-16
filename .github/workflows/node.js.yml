@@ -2,9 +2,9 @@ name: Node.js CI/CD
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build-android:
@@ -28,12 +28,18 @@ jobs:
     - name: Sign APK
       run: |
         echo ${{ secrets.ANDROID_KEYSTORE }} | base64 --decode > my-release-key.keystore
-        jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore -storepass ${{ secrets.ANDROID_KEYSTORE_PASSWORD }} -keypass ${{ secrets.ANDROID_KEY_ALIAS_PASSWORD }} app/build/outputs/apk/release/app-release-unsigned.apk ${{ secrets.ANDROID_KEY_ALIAS }}
+        jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 \
+          -keystore my-release-key.keystore \
+          -storepass ${{ secrets.ANDROID_KEYSTORE_PASSWORD }} \
+          -keypass ${{ secrets.ANDROID_KEY_ALIAS_PASSWORD }} \
+          -signedjar app/build/outputs/apk/release/app-release.apk \
+          app/build/outputs/apk/release/app-release-unsigned.apk \
+          ${{ secrets.ANDROID_KEY_ALIAS }}
     
     - name: Upload to Google Play
       uses: r0adkll/upload-google-play@v1
       with:
         serviceAccountJson: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT }}
         packageName: com.yourapp.package
-        releasefiles: app/build/outputs/apk/release/app-release.apk
+        releaseFiles: app/build/outputs/apk/release/app-release.apk
         track: production  # Hoặc bạn có thể chọn "beta" hoặc "alpha" tùy thuộc vào môi trường bạn muốn deploy
