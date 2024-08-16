@@ -1,4 +1,4 @@
-name: Node.js CI/CD
+name: React Native CI/CD
 
 on:
   push:
@@ -10,36 +10,61 @@ jobs:
   build-android:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x]
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
+        cache: 'yarn'
+    - run: yarn install
+
+    # Set up Android SDK
+    - name: Set up Android SDK
+      uses: reactivecircus/android-emulator-runner@v3
+      with:
+        api-levels: 30
+        arch: x86_64
+        target: google_apis
+        force-avd-creation: true
+
+    - name: Build APK
+      run: |
+        cd android
+        ./gradlew assembleRelease
+
+    - name: Upload APK
+      uses: actions/upload-artifact@v3
+      with:
+        name: android-release-apk
+        path: android/app/build/outputs/apk/release/app-release.apk
+
+  # Optional: Add a job for iOS if needed
+  build-ios:
+    runs-on: macos-latest
 
     steps:
     - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: '18.x'
         cache: 'yarn'
     - run: yarn install
-    - run: yarn build # Use the correct script name here
 
-    # Bước sign APK/AAB và upload lên Google Play
-    - name: Sign APK
+    # Install dependencies
+    - name: Install dependencies
       run: |
-        echo ${{ secrets.MYAPP_UPLOAD_STORE_FILE }} | base64 --decode > my-release-key.keystore
-        jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 \
-        -keystore my-release-key.keystore \
-        -storepass ${{ secrets.MYAPP_UPLOAD_STORE_PASSWORD }} \
-        -keypass ${{ secrets.MYAPP_UPLOAD_KEY_PASSWORD }} \
-        -signedjar app/build/outputs/apk/release/app-release.apk \
-        app/build/outputs/apk/release/app-release-unsigned.apk \
-        ${{ secrets.MYAPP_UPLOAD_KEY_ALIAS }}
+        cd ios
+        pod install
 
-    - name: Upload to Google Play
-      uses: r0adkll/upload-google-play@v1
+    - name: Build iOS
+      run: |
+        xcodebuild -workspace MyApp.xcworkspace -scheme MyApp -configuration Release -sdk iphoneos -archivePath $PWD/build/MyApp.xcarchive archive
+        xcodebuild -exportArchive -archivePath $PWD/build/MyApp.xcarchive -exportOptionsPlist ios/ExportOptions.plist -exportPath $PWD/build
+
+    - name: Upload iOS IPA
+      uses: actions/upload-artifact@v3
       with:
-        serviceAccountJson: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT }}
-        packageName: com.yourapp.package
-        releaseFiles: app/build/outputs/apk/release/app-release.apk
-        track: production
+        name: ios-release-ipa
+        path: build/*.ipa
