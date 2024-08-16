@@ -29,12 +29,12 @@ jobs:
       run: |
         echo ${{ secrets.ANDROID_KEYSTORE }} | base64 --decode > my-release-key.keystore
         jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 \
-          -keystore my-release-key.keystore \
-          -storepass ${{ secrets.ANDROID_KEYSTORE_PASSWORD }} \
-          -keypass ${{ secrets.ANDROID_KEY_ALIAS_PASSWORD }} \
-          -signedjar app/build/outputs/apk/release/app-release.apk \
-          app/build/outputs/apk/release/app-release-unsigned.apk \
-          ${{ secrets.ANDROID_KEY_ALIAS }}
+        -keystore my-release-key.keystore \
+        -storepass ${{ secrets.ANDROID_KEYSTORE_PASSWORD }} \
+        -keypass ${{ secrets.ANDROID_KEY_ALIAS_PASSWORD }} \
+        -signedjar app/build/outputs/apk/release/app-release.apk \
+        app/build/outputs/apk/release/app-release-unsigned.apk \
+        ${{ secrets.ANDROID_KEY_ALIAS }}  # Thêm alias name vào đây
     
     - name: Upload to Google Play
       uses: r0adkll/upload-google-play@v1
