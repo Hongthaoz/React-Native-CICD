@@ -5,36 +5,52 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 import { useAppDispatch, useAppSelector } from "../../lib/hooks";
 import { ProductItemCart, RootStackParamList } from '../../lib/types';
-import { CardItem } from '../../component';
+import { CardItemInCard } from '../../component';
 import { scale } from 'utils/resolutions';
+import { increaseQuantity, decreaseQuantity, removeProductFromCart } from '../../store/accCart/slide';
 import { fontSize } from 'constant';
 
-const FavoriteCoffeeScreen: React.FC = () => {
+const CartScreen: React.FC = () => {
     const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
     const dispatch = useAppDispatch();
-    const { listProductFavourites } = useAppSelector(state => state.Home);
+    const { listProductsInCart } = useAppSelector(state => state.Cart);
+
+    const handleIncrease = (id: number) => {
+        dispatch(increaseQuantity(id));
+    };
+
+    const handleDecrease = (id: number) => {
+        dispatch(decreaseQuantity(id));
+    };
+
+    const handleDelete = (id: number) => {
+        dispatch(removeProductFromCart(id));
+    };
 
     const _keyExtractor = (item: ProductItemCart) => `${item.id}`;
 
     const _renderCardItem = ({ item }: { item: ProductItemCart }) => (
         <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('ProductDetailScreen', { item })}>
-            <CardItem
+            <CardItemInCard
                 imageUrl={item.image_url}
                 name={item.name}
                 price={item.price}
+                quantity={item.quantity}
+                onDecrease={() => handleDecrease(item.id)}
+                onIncrease={() => handleIncrease(item.id)}
+                onRemove={() => handleDelete(item.id)}
             />
         </TouchableOpacity>
     );
 
     return (
         <View style={styles.container}>
-            <Text style={styles.textHeader}>Your favourites</Text>
+            <Text style={styles.textHeader}>Your cart</Text>
             <FlatList
-                data={listProductFavourites}
+                data={listProductsInCart}
                 renderItem={_renderCardItem}
                 keyExtractor={_keyExtractor}
                 contentContainerStyle={styles.flatListContainer}
-                numColumns={2}
             />
         </View>
     );
@@ -44,19 +60,19 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-
+     
     },
     flatListContainer: {
         justifyContent: 'space-between',
         paddingBottom: scale(150),
-        marginHorizontal: scale(8)
+        marginHorizontal:scale(8)
     },
     card: {
         flex: 1,
         margin: 5,
         borderRadius: 10,
     },
-    textHeader: {
+    textHeader:{
         fontSize: fontSize.size22,
         fontWeight: 'bold',
         marginBottom: scale(10),
@@ -66,4 +82,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default FavoriteCoffeeScreen;
+export default CartScreen;

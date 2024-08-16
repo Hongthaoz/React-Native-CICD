@@ -1,8 +1,14 @@
 
 import { LoadingModal } from './loading';
-import { CardItem } from './card';
+import { CardItem , CardItemInCard} from './card';
+import { SearchBar ,searchItems} from './search';
+import NotifierAlert from './NotifierAlert';
 
 export {
   LoadingModal,
-  CardItem
+  CardItem,
+  SearchBar,
+  searchItems,
+  NotifierAlert,
+  CardItemInCard
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, StyleSheet } from 'react-native';
 import { SvgXml } from 'react-native-svg';
-import { home_active, home, heart_active, heart, devices_active, devices } from '../svgImg';
+import { home_active, home, heart_active, heart, devices_active, devices, cart_active, cart } from '../svgImg';
 
 import { colors } from '../constant';
 import { hScale, scale } from 'utils/resolutions';
@@ -10,6 +10,7 @@ import { hScale, scale } from 'utils/resolutions';
 import HomeScreen from '../screens/home/HomeScreen';
 import FavoriteCoffeeScreen from '../screens/favorite/FavoriteCoffeeScreen';
 import NotificationScreen from '../screens/notify/NotificationScreen';
+import CartScreen from '../screens/cart/CartScreen';
 import { TabParamList } from '../lib/types';
 
 const Tab = createBottomTabNavigator<TabParamList>();
@@ -26,9 +27,7 @@ const TabNavigator = () => {
                     shadowOffset: { width: 0, height: 0 },
                     shadowRadius: 0,
                     elevation: 0,
-                    borderTopRightRadius: scale(30),
-                    borderTopLeftRadius: scale(30),
-                    backgroundColor:'#FAF0E6'
+                    backgroundColor: '#FAF0E6'
                 },
                 tabBarShowLabel: false,
                 sceneContainerStyle: {
@@ -44,6 +43,8 @@ const TabNavigator = () => {
                         iconToUse = focused ? heart_active : heart;
                     } else if (route.name === 'NotificationScreen') {
                         iconToUse = focused ? devices_active : devices;
+                    } else {
+                        iconToUse = focused ? cart_active : cart;
                     }
 
                     return (
@@ -68,6 +69,10 @@ const TabNavigator = () => {
                 component={FavoriteCoffeeScreen}
             />
             <Tab.Screen
+                name='CartScreen'
+                component={CartScreen}
+            />
+            <Tab.Screen
                 name='NotificationScreen'
                 component={NotificationScreen}
             />
@@ -88,8 +93,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#d29a69',
         justifyContent: 'center',
         alignItems: 'center',
-        // borderTopRightRadius: scale(30),
-        // borderTopLeftRadius: scale(30),
     },
 });
 

@@ -1,87 +1,74 @@
-import React, { useState } from "react";
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image, Dimensions, ScrollView } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, FlatList, StyleSheet, Dimensions, ImageBackground, TouchableOpacity, } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParamList } from '../../lib/types';
-import { colors } from "../../constant";
-import { CoffeeList } from "../../data/dummy-data";
-import { CardItem } from "../../component";
-import { hScale, scale } from "utils/resolutions";
-import { fontSize } from "constant";
+
+import { CardItem, LoadingModal, SearchBar, searchItems } from "../../component";
+import { scale } from "utils/resolutions";
+import { RootStackParamList, ProductItem } from '../../lib/types';
+import { useAppDispatch, useAppSelector } from "../../lib/hooks";
+import { RootState } from "../../store/index";
+import { fetchListProductScreen } from "../../store/accHome/thunk";
 
 const { width, height } = Dimensions.get('window')
 
-interface CoffeeItem {
-    id: number;
-    name: string;
-    prices: number;
-    imageUrl: string;
-    description: string;
-    coffeeType: number;
-}
-
-interface Coffee {
-    id: number;
-    name: string;
-    listItems: CoffeeItem[];
-}
-
 const HomeScreen = () => {
     const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+    const dispatch = useAppDispatch();
+    const { listProducts, isSubmitting } = useAppSelector(state => state.Home);
+    const [searchText, setSearchText] = useState('');
+    const [searchResults, setSearchResults] = useState(listProducts ? listProducts : []);
 
-    const [selectedCoffee, setSelectedCoffee] = useState<Coffee>(CoffeeList[0]);
-
-    const handleTabPress = (coffeeType: Coffee) => {
-        const selected = CoffeeList.find(item => item.id === coffeeType.id);
-        if (selected) {
-            setSelectedCoffee(selected);
-        }
+    const onChangeText = (text: string) => {
+        setSearchText(text);
+        const resultsData = searchItems(listProducts, text);
+        setSearchResults(resultsData);
     };
 
-    const _keyExtractor = (item: CoffeeItem) => `${item.id}`;
+    useEffect(() => {
+        dispatch(fetchListProductScreen());
+    }, []);
 
-    const _renderCardItem = ({ item }: { item: CoffeeItem }) => (
-        <View style={styles.card}>
+    const _keyExtractor = (item: ProductItem) => `${item.id}`;
+
+    const _renderCardItem = ({ item }: { item: ProductItem }) => (
+        <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('ProductDetailScreen', { item })}>
             <CardItem
-                imageUrl={item.imageUrl}
+                imageUrl={item.image_url}
                 name={item.name}
-                price={item.prices}
+                price={item.price}
                 description={item.description}
             />
-        </View>
-
+        </TouchableOpacity>
     );
+
+    useEffect(() => {
+        setSearchResults(listProducts ? listProducts : [])
+    }, [listProducts]);
 
     return (
         <View style={styles.container}>
-            <Image source={require('../../assets/banner.jpg')} style={styles.image} />
-            <ScrollView
-                style={styles.tabContainer}
-                horizontal
-                showsHorizontalScrollIndicator={false}
-            >
-                {CoffeeList.map((item) => (
-                    <TouchableOpacity
-                        key={item.id}
-                        style={[
-                            styles.tabButton,
-                            item.id === selectedCoffee.id && styles.activeTab
-                        ]}
-                        onPress={() => handleTabPress(item)}
-                    >
-                        <Text style={item.id === selectedCoffee.id ? styles.tabTextActive : styles.tabText}>
-                            {item.name}
-                        </Text>
-                    </TouchableOpacity>
-                ))}
-            </ScrollView>
-            <FlatList
-                data={selectedCoffee.listItems}
-                renderItem={_renderCardItem}
-                keyExtractor={_keyExtractor}
-                contentContainerStyle={styles.flatListContainer}
-                numColumns={2}
-            />
+            <ImageBackground source={require('../../assets/banner.jpg')} style={styles.image} >
+                <View style={styles.search}>
+                    <SearchBar
+                        value={searchText}
+                        onChangeText={text => {
+                            setSearchText(text);
+                            onChangeText(text);
+                        }}
+                    />
+                </View>
+            </ImageBackground>
+            <View style={styles.containerFlat}>
+                <FlatList
+                    data={searchResults}
+                    renderItem={_renderCardItem}
+                    keyExtractor={_keyExtractor}
+                    contentContainerStyle={styles.flatListContainer}
+                    numColumns={2}
+                />
+            </View>
+            <LoadingModal visible={isSubmitting} />
         </View>
     );
 };
@@ -89,45 +76,31 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: '#fff',
     },
-    tabContainer: {
-        paddingHorizontal: scale(10),
-        marginTop: scale(8),
-        height: hScale(70),
-        marginBottom:scale(8)
-    },
-    tabButton: {
-        backgroundColor: '#E8E8E8',
-        paddingVertical: hScale(10),
-        paddingHorizontal: scale(15),
-        borderRadius: scale(8),
-        marginHorizontal: scale(5),
-    },
-    activeTab: {
-        backgroundColor: '#d29a69',
-        color: colors.white,
-    },
-    tabText: {
-        color: '#8B4513',
-        fontSize: fontSize.size16,
-    },
-    tabTextActive: {
-        color: colors.white,
-        fontSize: fontSize.size16,
+    containerFlat: {
+        marginHorizontal: scale(10)
     },
     flatListContainer: {
-        marginHorizontal:scale(8),
-        paddingVertical: hScale(10),
-        flexGrow: 1,
+        justifyContent: 'space-between',
+        paddingBottom: scale(150)
+    },
+    card: {
+        flex: 1,
+        margin: 5,
+        backgroundColor: '#f8f8f8',
+        borderRadius: 10,
+        overflow: 'hidden',
+    },
+    search: {
+        marginHorizontal: scale(16),
+        marginBottom: scale(16),
+        marginTop: (height / 4) / 2
     },
     image: {
         width: width,
-        height: height / 3
+        height: height / 4
     },
-    card: {
-        marginHorizontal: scale(12),
-        marginBottom: scale(16),
-    }
 });
 
 export default HomeScreen;

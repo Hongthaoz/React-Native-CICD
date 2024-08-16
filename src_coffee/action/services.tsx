@@ -37,7 +37,6 @@ axiosInstance.interceptors.request.use(
       if (!config.headers) {
         config.headers = {} as AxiosHeaders;
       }
-
       const token = await getToken();
       if (token) {
         (config.headers as AxiosHeaders)['Authorization'] = `Bearer ${token}`;
@@ -104,6 +103,7 @@ interface PostRequestResponse<T = any> {
 }
 
 export const postRequest = async <T extends any>(path: string, body?: any): Promise<PostRequestResponse<T>> => {
+
   try {
     const response = await axiosInstance.post(path, body, { headers: header });
     const res = response.data;
@@ -135,14 +135,14 @@ export const postRequest = async <T extends any>(path: string, body?: any): Prom
 
 export const getRequest = async <T extends any>(path: string): Promise<PostRequestResponse<T>> => {
   try {
-    const response = await axiosInstance.get(path);
+    const response = await axiosInstance.get(path, { headers: header });
     const res = response.data;
 
     return {
-      status: res.StatusCode === 200 && res.ErrorCode === '0',
-      data: res.splash?.Result as T,
-      message: res.Message,
-      errorCode: res.ErrorCode,
+      status: true, 
+      data: res as T, 
+      message: 'Request successful',
+      errorCode: '0',
     };
   } catch (error: any) {
     console.error('Error Data Undefined', error);
@@ -154,3 +154,4 @@ export const getRequest = async <T extends any>(path: string): Promise<PostReque
     };
   }
 };
+

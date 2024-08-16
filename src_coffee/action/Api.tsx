@@ -1,4 +1,6 @@
-import { getRequest } from './services';
+import { getRequest, postRequest } from './services';
 
-export const ApiGetListSplash = () => getRequest('splash');
+export const ApiGetListProducts = () => getRequest('api');
+
+export const ApiGetDetailProduct = (id: number) => getRequest(`api/${id}`);
 
