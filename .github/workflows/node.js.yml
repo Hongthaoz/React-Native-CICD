@@ -20,11 +20,11 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm cli
-    - run: npm run build --if-present
+        cache: 'yarn'
+    - run: yarn install
+    - run: yarn build --if-present
 
-    # Bước sign APK và upload lên Google Play
+    # Bước sign APK/AAB và upload lên Google Play
     - name: Sign APK
       run: |
         echo ${{ secrets.MYAPP_UPLOAD_STORE_FILE }} | base64 --decode > my-release-key.keystore
@@ -32,7 +32,7 @@ jobs:
         -keystore my-release-key.keystore \
         -storepass ${{ secrets.MYAPP_UPLOAD_STORE_PASSWORD }} \
         -keypass ${{ secrets.MYAPP_UPLOAD_KEY_PASSWORD }} \
-        -signedjar app/build/outputs/apk/release/app-release-signed.apk \
+        -signedjar app/build/outputs/apk/release/app-release.apk \
         app/build/outputs/apk/release/app-release-unsigned.apk \
         ${{ secrets.MYAPP_UPLOAD_KEY_ALIAS }}
 
@@ -41,5 +41,5 @@ jobs:
       with:
         serviceAccountJson: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT }}
         packageName: com.yourapp.package
-        releaseFiles: app/build/outputs/apk/release/app-release-signed.apk
+        releaseFiles: app/build/outputs/apk/release/app-release.apk
         track: production
