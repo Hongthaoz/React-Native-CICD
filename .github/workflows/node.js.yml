@@ -12,14 +12,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+
+    # Thiết lập Node.js
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '18.x'
         cache: 'yarn'
+
+    # Cài đặt dependencies
     - run: yarn install
 
-    # Set up Android SDK
+    # Thiết lập Android SDK
     - name: Set up Android SDK
       uses: android-actions/setup-android@v2
       with:
@@ -27,15 +31,20 @@ jobs:
         build-tools: 33.0.0
         ndk: 21.4.7075529
 
-    # Grant execution permissions for gradlew
+    # Cấp quyền thực thi cho gradlew
     - name: Grant execution permissions for gradlew
       run: chmod +x android/gradlew
 
-    # Build APK
+    # Giải mã keystore
+    - name: Decode Keystore
+      run: |
+        echo ${{ secrets.MYAPP_UPLOAD_STORE_FILE }} | base64 --decode > android/app/my-upload-key.keystore
+
+    # Xây dựng APK
     - name: Build APK
       run: |
         cd android
-        ./gradlew assembleRelease
+        ./gradlew assembleRelease --stacktrace --info
 
     # Upload APK
     - name: Upload APK
@@ -43,3 +52,12 @@ jobs:
       with:
         name: android-release-apk
         path: android/app/build/outputs/apk/release/app-release.apk
+
+    # Tùy chọn: Cung cấp thông tin để upload lên Google Play
+    # - name: Upload to Google Play
+    #   uses: r0adkll/upload-google-play@v1
+    #   with:
+    #     serviceAccountJson: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT }}
+    #     packageName: com.yourapp.package
+    #     releaseFiles: android/app/build/outputs/apk/release/app-release.apk
+    #     track: production
