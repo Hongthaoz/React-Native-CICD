@@ -22,7 +22,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
     - run: yarn install
-    - run: yarn build --if-present
+    - run: yarn generate # Replace 'generate' with your actual build script name
 
     # Bước sign APK/AAB và upload lên Google Play
     - name: Sign APK
