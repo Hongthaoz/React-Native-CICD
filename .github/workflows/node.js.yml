@@ -21,12 +21,11 @@ jobs:
 
     # Set up Android SDK
     - name: Set up Android SDK
-      uses: reactivecircus/android-emulator-runner@v3
+      uses: android-actions/setup-android@v2
       with:
         api-levels: 30
-        arch: x86_64
-        target: google_apis
-        force-avd-creation: true
+        build-tools: 30.0.3
+        ndk: 21.4.7075529
 
     - name: Build APK
       run: |
