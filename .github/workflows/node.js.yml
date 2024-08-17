@@ -43,7 +43,7 @@ jobs:
     - name: Update Gradle Wrapper
       run: |
         cd android
-        ./gradlew wrapper --gradle-version 7.6.2 --no-daemon
+        ./gradlew wrapper --gradle-version 7.5.1 --no-daemon
 
     - name: Clean Gradle Build
       run: |
@@ -56,9 +56,15 @@ jobs:
         ./gradlew --refresh-dependencies --no-daemon
 
     - name: Build APK
+      env:
+        MYAPP_UPLOAD_STORE_FILE: ${{ secrets.MYAPP_UPLOAD_STORE_FILE }}
+        MYAPP_UPLOAD_KEY_ALIAS: ${{ secrets.MYAPP_UPLOAD_KEY_ALIAS }}
+        MYAPP_UPLOAD_STORE_PASSWORD: ${{ secrets.MYAPP_UPLOAD_STORE_PASSWORD }}
+        MYAPP_UPLOAD_KEY_PASSWORD: ${{ secrets.MYAPP_UPLOAD_KEY_PASSWORD }}
       run: |
         cd android
-          ./gradlew assembleRelease --no-daemon --warning-mode all --stacktrace --info
+        echo "$MYAPP_UPLOAD_STORE_FILE" > my-upload-key.keystore
+        ./gradlew assembleRelease --no-daemon --stacktrace --info
 
     - name: Upload APK
       uses: actions/upload-artifact@v3
