@@ -30,23 +30,27 @@ jobs:
     # Cài đặt dependencies
     - run: yarn install
 
-    # Thiết lập Android SDK
-    - name: Set up Android SDK
-      uses: android-actions/setup-android@v2
-      with:
-        api-levels: 33
-        build-tools: 33.0.0
-        ndk: 21.4.7075529
+    # Clean the Gradle cache directory
+    - name: Clean Gradle Cache Directory
+      run: |
+        rm -rf $HOME/.gradle/caches/
+        rm -rf android/.gradle/
+        rm -rf android/build/
+
+    # Refresh Gradle dependencies
+    - name: Refresh Dependencies
+      run: |
+        cd android
+        ./gradlew --refresh-dependencies
 
     # Cấp quyền thực thi cho gradlew
     - name: Grant execution permissions for gradlew
       run: chmod +x android/gradlew
 
-    # Clean Gradle Cache
-    - name: Clean Gradle Cache
+    # Clean the build directory
+    - name: Clean Gradle Build
       run: |
         cd android
-        ./gradlew cleanBuildCache
         ./gradlew clean
 
     # Xây dựng APK
