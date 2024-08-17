@@ -45,10 +45,15 @@ jobs:
         cd android
         ./gradlew clean --no-daemon
 
-    - name: Refresh Dependencies
+    - name: Refresh Gradle Dependencies
       run: |
         cd android
         ./gradlew --refresh-dependencies --no-daemon
+
+    - name: Update Gradle Wrapper
+      run: |
+        cd android
+        ./gradlew wrapper --gradle-version 7.5.1 --no-daemon
 
     - name: Build APK
       run: |
