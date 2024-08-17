@@ -66,6 +66,7 @@ jobs:
       run: |
         cd android
         ./gradlew clean
+        ./gradlew cleanBuildCache
 
     # Xây dựng APK
     - name: Build APK
