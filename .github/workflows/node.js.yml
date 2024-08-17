@@ -30,6 +30,10 @@ jobs:
     # Cài đặt dependencies
     - run: yarn install
 
+    # Cấp quyền thực thi cho gradlew
+    - name: Grant execution permissions for gradlew
+      run: chmod +x android/gradlew
+
     # Clean the Gradle cache directory
     - name: Clean Gradle Cache Directory
       run: |
@@ -42,10 +46,6 @@ jobs:
       run: |
         cd android
         ./gradlew --refresh-dependencies
-
-    # Cấp quyền thực thi cho gradlew
-    - name: Grant execution permissions for gradlew
-      run: chmod +x android/gradlew
 
     # Clean the build directory
     - name: Clean Gradle Build
