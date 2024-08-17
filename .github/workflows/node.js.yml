@@ -20,8 +20,8 @@ jobs:
         node-version: '18.x'
         cache: 'yarn'
 
-    # Cài đặt Java 17
-    - name: Set up Java 17
+    # Thiết lập Java JDK 17
+    - name: Set up Java JDK 17
       uses: actions/setup-java@v3
       with:
         java-version: '17'
@@ -42,15 +42,11 @@ jobs:
     - name: Grant execution permissions for gradlew
       run: chmod +x android/gradlew
 
-    # Giải mã keystore
-    - name: Decode Keystore
-      run: |
-        echo ${{ secrets.MYAPP_UPLOAD_STORE_FILE }} | base64 --decode > android/app/my-upload-key.keystore
-
     # Clean Gradle Cache
     - name: Clean Gradle Cache
       run: |
         cd android
+        ./gradlew cleanBuildCache
         ./gradlew clean
 
     # Xây dựng APK
