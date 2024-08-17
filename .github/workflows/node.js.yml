@@ -30,6 +30,20 @@ jobs:
     # Cài đặt dependencies
     - run: yarn install
 
+    # Thiết lập Android SDK
+    - name: Set up Android SDK
+      uses: android-actions/setup-android@v2
+      with:
+        api-levels: 33
+        build-tools: 33.0.0
+        ndk: 21.4.7075529
+        # Add required components
+        components: |
+          emulator
+          platform-tools
+          platforms;android-33
+          system-images;android-33;google_apis;x86_64
+
     # Cấp quyền thực thi cho gradlew
     - name: Grant execution permissions for gradlew
       run: chmod +x android/gradlew
