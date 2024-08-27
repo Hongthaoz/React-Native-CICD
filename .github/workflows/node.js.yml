@@ -40,10 +40,10 @@ jobs:
     - name: Grant Execution Permissions for gradlew
       run: chmod +x android/gradlew
 
-    - name: Update Gradle Wrapper
-      run: |
-        cd android
-        ./gradlew wrapper --gradle-version 8.0 --no-daemon
+    # - name: Update Gradle Wrapper
+    #   run: |
+    #     cd android
+    #     ./gradlew wrapper --gradle-version 8.0 --no-daemon
 
     - name: Clean Gradle Build
       run: |
