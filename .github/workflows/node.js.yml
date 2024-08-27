@@ -43,7 +43,7 @@ jobs:
     - name: Update Gradle Wrapper
       run: |
         cd android
-          ./gradlew wrapper --gradle-version 7.5.1 --no-daemon
+        ./gradlew wrapper --gradle-version 8.0 --no-daemon
 
     - name: Clean Gradle Build
       run: |
