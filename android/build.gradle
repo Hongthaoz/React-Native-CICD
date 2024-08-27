@@ -7,6 +7,7 @@ buildscript {
         compileSdkVersion = 33
         targetSdkVersion = 33
         kotlin_version = '1.7.21'
+        react_native_gradle_plugin_version = '0.70.10'
 
         if (System.properties['os.arch'] == "aarch64") {
             // For M1 Users we need to use the NDK 24 which added support for aarch64
@@ -22,9 +23,11 @@ buildscript {
     }
     dependencies {
         classpath("com.android.tools.build:gradle:8.0.1")
+        classpath("com.facebook.react:react-native-gradle-plugin:$react_native_gradle_plugin_version")
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath("de.undercouch:gradle-download-task:5.0.1")
         classpath('com.google.gms:google-services:4.3.3')
+        
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
